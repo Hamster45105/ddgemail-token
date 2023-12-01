@@ -1,4 +1,5 @@
-# Duck.com Email-token Generator ![GitHub stars](https://img.shields.io/github/stars/Hamster45105/ddgemail-token) ![GitHub forks](https://img.shields.io/github/forks/Hamster45105/ddgemail-token) ![GitHub issues](https://img.shields.io/github/issues/Hamster45105/ddgemail-token)
+# Duck.com Email-token Generator 
+![GitHub stars](https://img.shields.io/github/stars/Hamster45105/ddgemail-token) ![GitHub forks](https://img.shields.io/github/forks/Hamster45105/ddgemail-token) ![GitHub issues](https://img.shields.io/github/issues/Hamster45105/ddgemail-token)
 
 This is a web application that generates a duck.com email-token for a given Hamster45105 and OTP. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
