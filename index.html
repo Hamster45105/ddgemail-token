@@ -1,12 +1,88 @@
 <!DOCTYPE html>
 <html>
-<body>
-  <input type="text" id="username" placeholder="Username">
-  <button onclick="auth()">Authenticate</button>
-  <input type="text" id="otp" placeholder="OTP" disabled>
-  <button onclick="getToken()" disabled>Get Token</button>
-  <p id="tokenOutput"></p>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+    body {
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    h1, h2 {
+      color: #444;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .form-group input, .form-group button {
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .form-group input {
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group button {
+      background-color: #007BFF;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-group button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    @media (min-width: 600px) {
+      .form-group {
+        flex-direction: row;
+      }
+
+      .form-group input, .form-group button {
+        margin-right: 10px;
+      }
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Get DDG API Key</h1>
+    <h2>Enter username (without @duck.com)</h2>
+    <div class="form-group">
+      <input type="text" id="username" placeholder="Username">
+      <button onclick="auth()">Send Email</button>
+    </div>
+    <h2>Enter OTP Code From Email</h2>
+    <div class="form-group">
+      <input type="text" id="otp" placeholder="OTP" disabled>
+      <button onclick="getToken()" disabled>Get Token</button>
+    </div>
+    <h2>Your Token</h2>
+    <p id="tokenOutput"></p>
+
+    <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f4f4f4;">
+      Made with ❤️ by Hamster45105
+    </footer>
+  </body>
+  </html>
   <script>
     async function auth() {
       const username = document.getElementById('username').value;
