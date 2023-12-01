@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck.com Email-token Generator</title>
+</head>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -63,7 +67,8 @@
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body onload="resetPage()">
+    <p id="errorMessage" style="color: red;"></p>
     <h1>Get DDG API Key</h1>
     <h2>Enter username (without @duck.com)</h2>
     <div class="form-group">
@@ -83,22 +88,31 @@
       Made with ❤️ by Hamster45105
     </footer>
   </body>
+  <body onload="resetPage()"></body>
   </html>
   <script>
     async function auth() {
       const username = document.getElementById('username').value;
 
-      const response = await fetch('/api/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username })
-      });
+      try {
+        const response = await fetch('/api/auth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username })
+        });
 
-      if (response.ok) {
+        if (!response.ok) {
+          throw new Error('Authentication failed');
+        }
+
         document.getElementById('otp').disabled = false;
         document.querySelector('button[onclick="getToken()"]').disabled = false;
+      } catch (error) {
+        document.getElementById('errorMessage').textContent = error.message;
+        document.getElementById('otp').disabled = true;
+        document.querySelector('button[onclick="getToken()"]').disabled = true;
       }
     }
 
@@ -106,21 +120,28 @@
       const username = document.getElementById('username').value;
       const otp = document.getElementById('otp').value.replace(/ /g, '+');
 
-      const response = await fetch('/api/getToken', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, otp })
-      });
+      try {
+        const response = await fetch('/api/getToken', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, otp })
+        });
 
-      const data = await response.json();
-      const token = data.token;
+        if (!response.ok) {
+          throw new Error('Failed to get token');
+        }
 
-      document.getElementById('tokenOutput').innerText = `${token}`;
-      const copyButton = document.getElementById('copyButton');
-      copyButton.disabled = false;
-      copyButton.style.backgroundColor = '#007BFF';
+        const data = await response.json();
+        document.getElementById('tokenOutput').textContent = data.token;
+        document.getElementById('copyButton').disabled = false;
+        document.getElementById('copyButton').style.backgroundColor = '#007BFF';
+      } catch (error) {
+        document.getElementById('errorMessage').textContent = error.message;
+        document.getElementById('copyButton').disabled = true;
+        document.getElementById('copyButton').style.backgroundColor = '#ccc';
+      }
     }
 
     function copyToken() {
@@ -136,6 +157,18 @@
       document.execCommand('copy');
       window.getSelection().removeAllRanges();
       alert('Token copied to clipboard!');
+    }
+
+    function resetPage() {
+      document.getElementById('username').value = '';
+      document.getElementById('otp').value = '';
+      document.getElementById('tokenOutput').textContent = '';
+      document.getElementById('errorMessage').textContent = '';
+      document.getElementById('otp').disabled = true;
+      document.querySelector('button[onclick="getToken()"]').disabled = true;
+      const copyButton = document.getElementById('copyButton');
+      copyButton.disabled = true;
+      copyButton.style.backgroundColor = '#ccc';
     }
   </script>
   <script>
