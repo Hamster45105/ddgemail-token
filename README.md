@@ -1,5 +1,12 @@
-# Duck.com Email-token Generator 
-![GitHub stars](https://img.shields.io/github/stars/Hamster45105/ddgemail-token) ![GitHub forks](https://img.shields.io/github/forks/Hamster45105/ddgemail-token) ![GitHub issues](https://img.shields.io/github/issues/Hamster45105/ddgemail-token)
+# Duck.com Email API Token Retriever
+[![GitHub Watchers](https://img.shields.io/github/watchers/Hamster45105/ddgemail-token?style=social)](https://github.com/Hamster45105/ddgemail-token/watchers)
+[![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social)](https://github.com/Hamster45105/ddgemail-token/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/Hamster45105/ddgemail-token?style=social)](https://github.com/Hamster45105/ddgemail-token/forks)
+
+
+[![Reported Bugs](https://img.shields.io/github/issues/Hamster45105/ddgemail-token/bug?label=Reported%20Bugs&style=flat&color=cc4453)](https://github.com/Hamster45105/ddgemail-token/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+[![Current License](https://img.shields.io/github/license/Hamster45105/ddgemail-token?label=License&style=flat)](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE)
+![Deployment Status](https://img.shields.io/github/deployments/Hamster45105/ddgemail-token/Production?logo=vercel&label=Deployment)
 
 This is a web application that generates a duck.com email-token for a given Hamster45105 and OTP. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
