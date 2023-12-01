@@ -16,6 +16,8 @@ This is a web application that generates a duck.com email-token for a given Hams
 2. Enter the OTP and click "Get Token".
 3. Your token will be displayed on the screen.
 
+Note: Don't spam getting a token for the same user because the DuckDuckGo service will block you and you won't be able to make any more requests for a while
+
 ## Deployment
 
 This project is deployed with Vercel. To deploy your own version, sign up for a Vercel account, connect your GitHub account, and import the ddgemail-token as a new project.
