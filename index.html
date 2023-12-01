@@ -76,7 +76,8 @@
       <button onclick="getToken()" disabled>Get Token</button>
     </div>
     <h2>Your Token</h2>
-    <p id="tokenOutput"></p>
+    <p id="tokenOutput" style="font-weight: bold; text-align: center;"></p>
+    <button id="copyButton" onclick="copyToken()" style="padding: 10px; background-color: #ccc; color: #fff; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; transition: background-color 0.3s ease;" disabled>Copy Token</button>
 
     <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f4f4f4;">
       Made with ❤️ by Hamster45105
@@ -116,7 +117,25 @@
       const data = await response.json();
       const token = data.token;
 
-      document.getElementById('tokenOutput').innerText = `Your duck.com Email-token is: ${token}`;
+      document.getElementById('tokenOutput').innerText = `${token}`;
+      const copyButton = document.getElementById('copyButton');
+      copyButton.disabled = false;
+      copyButton.style.backgroundColor = '#007BFF';
+    }
+
+    function copyToken() {
+      const copyButton = document.getElementById('copyButton');
+      copyButton.disabled = true;
+      copyButton.style.backgroundColor = '#ccc';
+
+      const tokenOutput = document.getElementById('tokenOutput');
+      const range = document.createRange();
+      range.selectNode(tokenOutput);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      alert('Token copied to clipboard!');
     }
   </script>
 </body>
