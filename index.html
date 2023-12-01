@@ -24,12 +24,14 @@
 
     h1, h2 {
       color: #444;
+      text-align: center;
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
       margin-bottom: 20px;
+      align-items: center;
     }
 
     .form-group input, .form-group button {
@@ -68,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body onload="resetPage()">
-    <p id="errorMessage" style="color: red;"></p>
+    <p id="errorMessage" style="color: red; text-align: center;"></p>
     <h1>Get DDG API Key</h1>
     <h2>Enter username (without @duck.com)</h2>
     <div class="form-group">
@@ -84,7 +86,8 @@
     <p id="tokenOutput" style="font-weight: bold; text-align: center;"></p>
     <button id="copyButton" onclick="copyToken()" style="padding: 10px; background-color: #ccc; color: #fff; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; transition: background-color 0.3s ease;" disabled>Copy Token</button>
 
-    <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f4f4f4;">
+    <footer style="display: flex; flex-direction: column; align-items: center; position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f4f4f4;">
+      <a href="https://github.com/Hamster45105/ddgemail-token">GitHub Page</a>
       Made with ❤️ by Hamster45105
     </footer>
   </body>
