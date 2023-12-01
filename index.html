@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input type="text" id="username" placeholder="Username">
+  <button onclick="auth()">Authenticate</button>
+  <input type="text" id="otp" placeholder="OTP" disabled>
+  <button onclick="getToken()" disabled>Get Token</button>
+  <p id="tokenOutput"></p>
+
+  <script>
+    async function auth() {
+      const username = document.getElementById('username').value;
+
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username })
+      });
+
+      if (response.ok) {
+        document.getElementById('otp').disabled = false;
+        document.querySelector('button[onclick="getToken()"]').disabled = false;
+      }
+    }
+
+    async function getToken() {
+      const username = document.getElementById('username').value;
+      const otp = document.getElementById('otp').value.replace(/ /g, '+');
+
+      const response = await fetch('/api/getToken', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, otp })
+      });
+
+      const data = await response.json();
+      const token = data.token;
+
+      document.getElementById('tokenOutput').innerText = `Your duck.com Email-token is: ${token}`;
+    }
+  </script>
+</body>
+</html>
