@@ -49,6 +49,7 @@
     <div id="usernamePage" class="page">
         <h1>Enter Username</h1>
         <input type="text" id="username" placeholder="Username">
+        <div class="g-recaptcha" data-sitekey="6Le4kCMpAAAAAPNK6UIZowxv4MAFxDzVCmV_yOpy" style="display: flex; justify-content: center;"></div>
         <button onclick="auth()">Next</button>
     </div>
     <div id="otpPage" class="page" style="display: none;">
@@ -63,10 +64,11 @@
         <button onclick="copyToken()">Copy Token</button>
         <button onclick="resetPage()">Start Over</button>
     </div>
-    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         async function auth() {
             const username = document.getElementById('username').value;
+            const recaptchaResponse = grecaptcha.getResponse(); // Get reCAPTCHA response
 
             try {
                 const response = await fetch('/api/auth', {
@@ -74,16 +76,18 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username })
+                    body: JSON.stringify({ username, recaptchaResponse }) // Include reCAPTCHA response in your request
                 });
 
                 if (!response.ok) {
-                    throw new Error('Authentication failed');
-                }
+                    const errorData = await response.json(); // Extract error data from response
+                    throw new Error(errorData.error); // Throw error with specific message
+                }   
 
                 document.getElementById('usernamePage').style.display = 'none';
                 document.getElementById('otpPage').style.display = 'block';
             } catch (error) {
+                grecaptcha.reset();
                 alert(error.message);
             }
         }
@@ -115,6 +119,7 @@
         }
 
         function backToUsername() {
+            grecaptcha.reset();
             document.getElementById('otpPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
         }
