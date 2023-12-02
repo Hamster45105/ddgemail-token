@@ -22,8 +22,7 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 
 This project is deployed with Vercel. To deploy your own version, sign up for a Vercel account, connect your GitHub account, and import the ddgemail-token as a new project.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?ddgemail-token-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token)
-
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token&env=RECAPTCHA_SECRET_KEY&envDescription=reCaptcha%20secret%20key%20required%20to%20verify%20requests&envLink=https%3A%2F%2Fwww.google.com%2Frecaptcha%2Fadmin%2Fcreate&project-name=ddgemail-token&repository-name=ddgemail-token)
 ## License
 
 This project is licensed under the GNU General Public License v3.0.
