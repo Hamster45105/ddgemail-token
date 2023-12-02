@@ -64,6 +64,16 @@
       overflow-wrap: break-word;
       word-wrap: break-word;
     }
+
+    #emailDisplay {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +86,7 @@
     </div>
     <div id="otpPage" class="page" style="display: none;">
         <h1>Enter OTP</h1>
+        <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
         <button onclick="getToken()">Get Token --></button>
         <button onclick="backToUsername()"><-- Back</button>
@@ -114,6 +125,7 @@
 
                 document.getElementById('usernamePage').style.display = 'none';
                 document.getElementById('otp').value = '';
+                document.getElementById('emailDisplay').textContent = document.getElementById('username').value + '@duck.com';
                 document.getElementById('otpPage').style.display = 'block';
             } catch (error) {
                 grecaptcha.reset();
