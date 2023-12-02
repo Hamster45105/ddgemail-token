@@ -15,11 +15,14 @@ module.exports = async (req, res) => {
     return res.status(400).send({ error: 'reCAPTCHA verification failed' });
   }
 
-  await axios.get(`https://quack.duckduckgo.com/api/auth/loginlink?user=${username}`, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0'
-    }
-  });
-
+  try {
+    await axios.get(`https://quack.duckduckgo.com/api/auth/loginlink?user=${username}`, {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0'
+        }
+    });
+  } catch (error) {
+      return res.status(500).send({ error: 'An error occurred, please try again later' });
+  }
   res.status(200).send({ message: 'Email sent' });
 };
