@@ -9,7 +9,6 @@ module.exports = async (req, res) => {
   const username = req.body.username;
   const recaptchaResponse = req.body.recaptchaResponse;
 
-  // Verify reCAPTCHA response
   const recaptchaVerifyResponse = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`);
   if (!recaptchaVerifyResponse.data.success) {
     return res.status(400).send({ error: 'reCAPTCHA verification failed' });

@@ -75,7 +75,7 @@
     <script>
         async function auth() {
             const username = document.getElementById('username').value;
-            const recaptchaResponse = grecaptcha.getResponse(); // Get reCAPTCHA response
+            const recaptchaResponse = grecaptcha.getResponse();
 
             try {
                 const response = await fetch('/api/auth', {
@@ -83,12 +83,12 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username, recaptchaResponse }) // Include reCAPTCHA response in your request
+                    body: JSON.stringify({ username, recaptchaResponse })
                 });
 
                 if (!response.ok) {
-                    const errorData = await response.json(); // Extract error data from response
-                    throw new Error(errorData.error); // Throw error with specific message
+                    const errorData = await response.json();
+                    throw new Error(errorData.error);
                 }   
 
                 document.getElementById('usernamePage').style.display = 'none';
