@@ -107,8 +107,9 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to get token');
-                }
+                    const errorData = await response.json();
+                    throw new Error(errorData.error);
+                }   
 
                 const data = await response.json();
                 document.getElementById('otpPage').style.display = 'none';

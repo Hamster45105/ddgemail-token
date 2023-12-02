@@ -3,7 +3,7 @@ require('dotenv').config();
 
 module.exports = async (req, res) => {
   if (!req.body || !req.body.username || !req.body.recaptchaResponse) {
-    return res.status(400).send({ error: 'username and reCAPTCHA response are required' });
+    return res.status(400).send({ error: 'Please enter username and complete captcha' });
   }
 
   const username = req.body.username;
