@@ -4,46 +4,62 @@
     <title>DDG API Key Grabber</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 50px;
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          color: #333;
+      }
+  
+      h1 {
+          text-align: center;
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 50px;
+      }
+  
+      .page {
+          text-align: center;
+          margin: 0 auto;
+          width: 80%;
+          max-width: 500px;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 4px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      .page h1 {
+          font-size: 2em;
+          margin-bottom: 20px;
+      }
+  
+      .page input[type="text"], .page input[type="password"] {
+        width: 90%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1.2em;
+    }
 
-        .page {
-            text-align: center;
-            margin: 0 auto;
-            width: 80%;
-            max-width: 500px;
-        }
+    .page button {
+        width: 90%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
 
-        .page h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .page input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            font-size: 1em;
-        }
-
-        .page button {
-            padding: 10px 20px;
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        #tokenOutput {
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-    </style>
+    .page button:hover {
+        background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
     <h1>@duck.com API Key Grabber</h1>
@@ -51,19 +67,19 @@
         <h1>Enter Username</h1>
         <input type="text" id="username" placeholder="Username">
         <div class="g-recaptcha" data-sitekey="6Le4kCMpAAAAAPNK6UIZowxv4MAFxDzVCmV_yOpy" style="display: flex; justify-content: center;"></div>
-        <button onclick="auth()">Next</button>
+        <button onclick="auth()">Next --></button>
     </div>
     <div id="otpPage" class="page" style="display: none;">
         <h1>Enter OTP</h1>
         <input type="text" id="otp" placeholder="OTP">
-        <button onclick="getToken()">Get Token</button>
-        <button onclick="backToUsername()">Back</button>
+        <button onclick="backToUsername()"><-- Back</button>
+        <button onclick="getToken()">Get Token --></button>
     </div>
     <div id="tokenPage" class="page" style="display: none;">
         <h1>Your Token</h1>
         <p id="tokenOutput"></p>
         <button onclick="copyToken()">Copy Token</button>
-        <button onclick="resetPage()">Start Over</button>
+        <button onclick="resetPage()"><--Start Over</button>
     </div>
     <footer style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: #f8f9fa; color: black; text-align: center; padding: 10px 0;">
       <a href="https://github.com/Hamster45105/ddgemail-token">
