@@ -1,201 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duck.com Email-token Generator</title>
+    <title>DDG API Key Wizard</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .page {
+            text-align: center;
+            margin: 0 auto;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .page h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .page input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        .page button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        #tokenOutput {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      padding: 20px;
-      background-color: #f4f4f4;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    h1, h2 {
-      color: #444;
-      text-align: center;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-      align-items: center;
-    }
-
-    .form-group input, .form-group button {
-      padding: 10px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .form-group input {
-      background-color: #fff;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-group button {
-      background-color: #007BFF;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .form-group button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-
-    @media (min-width: 600px) {
-      .form-group {
-        flex-direction: row;
-      }
-
-      .form-group input, .form-group button {
-        margin-right: 10px;
-      }
-    }
-
-    @keyframes flash {
-      0% {background-color: #ff0000;}
-      25% {background-color: #ffffff;}
-      50% {background-color: #ff0000;}
-      75% {background-color: #ffffff;}
-      100% {background-color: #ff0000;}
-    }
-
-  </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body onload="resetPage()">
-    <p id="errorMessage" style="color: red; text-align: center;"></p>
-    <h1>Get DDG API Key</h1>
-    <h2>Enter username (without @duck.com)</h2>
-    <div class="form-group">
-      <input type="text" id="username" placeholder="Username">
-      <button onclick="auth()">Send Email</button>
+<body>
+    <h1>@duck.com API Key Grabber</h1>
+    <div id="usernamePage" class="page">
+        <h1>Enter Username</h1>
+        <input type="text" id="username" placeholder="Username">
+        <div class="g-recaptcha" data-sitekey="6Le4kCMpAAAAAPNK6UIZowxv4MAFxDzVCmV_yOpy" style="display: flex; justify-content: center;"></div>
+        <button onclick="auth()">Next</button>
     </div>
-    <h2>Enter OTP Code From Email</h2>
-    <div class="form-group">
-      <input type="text" id="otp" placeholder="OTP" disabled>
-      <button onclick="getToken()" disabled>Get Token</button>
+    <div id="otpPage" class="page" style="display: none;">
+        <h1>Enter OTP</h1>
+        <input type="text" id="otp" placeholder="OTP">
+        <button onclick="getToken()">Get Token</button>
+        <button onclick="backToUsername()">Back</button>
     </div>
-    <h2>Your Token</h2>
-    <p id="tokenOutput" style="font-weight: bold; text-align: center;"></p>
-    <button id="copyButton" onclick="copyToken()" style="padding: 10px; background-color: #ccc; color: #fff; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; transition: background-color 0.3s ease;" disabled>Copy Token</button>
+    <div id="tokenPage" class="page" style="display: none;">
+        <h1>Your Token</h1>
+        <p id="tokenOutput"></p>
+        <button onclick="copyToken()">Copy Token</button>
+        <button onclick="resetPage()">Start Over</button>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        async function auth() {
+            const username = document.getElementById('username').value;
+            const recaptchaResponse = grecaptcha.getResponse(); // Get reCAPTCHA response
 
-    <footer style="display: flex; flex-direction: column; align-items: center; position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: #f4f4f4;">
-      <a href="https://github.com/Hamster45105/ddgemail-token">GitHub Page</a>
-      Made with ❤️ by Hamster45105
-    </footer>
-  </body>
-  <body onload="resetPage()"></body>
-  </html>
-  <script>
-    async function auth() {
-      const username = document.getElementById('username').value;
+            try {
+                const response = await fetch('/api/auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, recaptchaResponse }) // Include reCAPTCHA response in your request
+                });
 
-      try {
-        const response = await fetch('/api/auth', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ username })
-        });
+                if (!response.ok) {
+                    const errorData = await response.json(); // Extract error data from response
+                    throw new Error(errorData.error); // Throw error with specific message
+                }   
 
-        if (!response.ok) {
-          throw new Error('Authentication failed');
-        }
-        
-        document.getElementById('errorMessage').textContent = '';
-        document.getElementById('otp').disabled = false;
-        document.querySelector('button[onclick="getToken()"]').disabled = false;
-      } catch (error) {
-        const errorMessageElement = document.getElementById('errorMessage');
-        errorMessageElement.textContent = error.message;
-        errorMessageElement.style.animation = 'none';
-        setTimeout(() => errorMessageElement.style.animation = 'flash 2s ease-in-out', 0);
-        
-        document.getElementById('otp').disabled = true;
-        document.querySelector('button[onclick="getToken()"]').disabled = true;
-      }
-    }
-
-    async function getToken() {
-      const username = document.getElementById('username').value;
-      const otp = document.getElementById('otp').value.replace(/ /g, '+');
-
-      try {
-        const response = await fetch('/api/getToken', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ username, otp })
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to get token');
+                document.getElementById('usernamePage').style.display = 'none';
+                document.getElementById('otpPage').style.display = 'block';
+            } catch (error) {
+                grecaptcha.reset();
+                alert(error.message);
+            }
         }
 
-        const data = await response.json();
-        document.getElementById('errorMessage').textContent = '';
-        document.getElementById('tokenOutput').textContent = data.token;
-        document.getElementById('copyButton').disabled = false;
-        document.getElementById('copyButton').style.backgroundColor = '#007BFF';
-      } catch (error) {
-        const errorMessageElement = document.getElementById('errorMessage');
-        errorMessageElement.textContent = error.message;
-        errorMessageElement.style.animation = 'none';
-        setTimeout(() => errorMessageElement.style.animation = 'flash 2s ease-in-out', 0);
-        
-        document.getElementById('copyButton').disabled = true;
-        document.getElementById('copyButton').style.backgroundColor = '#ccc';
-      }
-    }
+        async function getToken() {
+            const username = document.getElementById('username').value;
+            const otp = document.getElementById('otp').value.replace(/ /g, '+');
 
-    function copyToken() {
-      const copyButton = document.getElementById('copyButton');
-      copyButton.disabled = true;
-      copyButton.style.backgroundColor = '#ccc';
+            try {
+                const response = await fetch('/api/getToken', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, otp })
+                });
 
-      const tokenOutput = document.getElementById('tokenOutput');
-      const range = document.createRange();
-      range.selectNode(tokenOutput);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      alert('Token copied to clipboard!');
-    }
+                if (!response.ok) {
+                    throw new Error('Failed to get token');
+                }
 
-    function resetPage() {
-      document.getElementById('username').value = '';
-      document.getElementById('otp').value = '';
-      document.getElementById('tokenOutput').textContent = '';
-      document.getElementById('errorMessage').textContent = '';
-      document.getElementById('otp').disabled = true;
-      document.querySelector('button[onclick="getToken()"]').disabled = true;
-      const copyButton = document.getElementById('copyButton');
-      copyButton.disabled = true;
-      copyButton.style.backgroundColor = '#ccc';
-    }
-  </script>
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+                const data = await response.json();
+                document.getElementById('otpPage').style.display = 'none';
+                document.getElementById('tokenPage').style.display = 'block';
+                document.getElementById('tokenOutput').innerText = data.token;
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        function backToUsername() {
+            grecaptcha.reset();
+            document.getElementById('otpPage').style.display = 'none';
+            document.getElementById('usernamePage').style.display = 'block';
+        }
+
+        function resetPage() {
+            document.getElementById('tokenPage').style.display = 'none';
+            document.getElementById('usernamePage').style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('otp').value = '';
+            document.getElementById('tokenOutput').innerText = '';
+        }
+
+        function copyToken() {
+            var token = document.getElementById('tokenOutput').innerText;
+            navigator.clipboard.writeText(token);
+        }
+    </script>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
