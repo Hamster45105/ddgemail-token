@@ -227,9 +227,9 @@
         }
 
         function resetPage() {
+            grecaptcha.reset();
             document.getElementById('tokenPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
-            document.getElementById('username').value = '';
             document.getElementById('otp').value = '';
             document.getElementById('tokenOutput').innerText = '';
         }
