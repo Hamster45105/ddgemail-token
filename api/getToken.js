@@ -15,7 +15,16 @@ module.exports = async (req, res) => {
       }
     });
 
-    const token = loginResponse.data.token;
+    const ot_token = loginResponse.data.token;
+
+    const tokenResponse = await axios.get('https://quack.duckduckgo.com/api/email/dashboard', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0',
+        'Authorization': `Bearer ${ot_token}`
+      }
+    });
+
+    const token = tokenResponse.data.user.access_token;
 
     res.status(200).send({ token: token });
   } catch (error) {
