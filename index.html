@@ -237,6 +237,10 @@
         function copyToken() {
             var token = document.getElementById('tokenOutput').innerText;
             navigator.clipboard.writeText(token);
+
+            const button = document.querySelector('button[onclick="copyToken()"]');
+            button.textContent = "Copied!";
+            button.style.backgroundColor = "#21ceb7";
         }
 
         function setButtonLoading(button, loadingText) {
