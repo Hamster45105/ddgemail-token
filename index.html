@@ -156,11 +156,16 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         async function auth() {
-            const username = document.getElementById('username').value;
+            let username = document.getElementById('username').value;
             const recaptchaResponse = grecaptcha.getResponse();
             
             const button = document.querySelector('button[onclick="auth()"]');
             setButtonLoading(button, 'Authenticating...');
+            
+            if (username.endsWith('@duck.com')) {
+                username = username.slice(0, -9);
+                document.getElementById('username').value = username;
+            }
 
             try {
                 const response = await fetch('/api/auth', {
