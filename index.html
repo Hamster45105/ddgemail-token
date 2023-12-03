@@ -110,6 +110,9 @@
         async function auth() {
             const username = document.getElementById('username').value;
             const recaptchaResponse = grecaptcha.getResponse();
+            
+            const button = document.querySelector('button[onclick="auth()"]');
+            setButtonLoading(button, 'Authenticating...');
 
             try {
                 const response = await fetch('/api/auth', {
@@ -133,11 +136,16 @@
                 grecaptcha.reset();
                 alert(error.message);
             }
+
+            unSetButtonLoading(button, 'Next -->');
         }
 
         async function getToken() {
             const username = document.getElementById('username').value;
             const otp = document.getElementById('otp').value.replace(/ /g, '+');
+            
+            const button = document.querySelector('button[onclick="getToken()"]');
+            setButtonLoading(button, 'Getting Token...');
 
             try {
                 const response = await fetch('/api/getToken', {
@@ -160,6 +168,8 @@
             } catch (error) {
                 alert(error.message);
             }
+
+            unSetButtonLoading(button, 'Get Token -->');
         }
 
         function backToUsername() {
@@ -179,6 +189,18 @@
         function copyToken() {
             var token = document.getElementById('tokenOutput').innerText;
             navigator.clipboard.writeText(token);
+        }
+
+        function setButtonLoading(button, loadingText) {
+            button.textContent = loadingText;
+            button.disabled = true;
+            button.style.backgroundColor = "#808080";
+        }
+
+        function unSetButtonLoading(button, originalText) {
+            button.textContent = originalText;
+            button.disabled = false;
+            button.style.backgroundColor = "#4CAF50";
         }
     </script>
     <script>
