@@ -8,15 +8,15 @@
 [![Current License](https://img.shields.io/github/license/Hamster45105/ddgemail-token?label=License&style=flat)](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE)
 ![Deployment Status](https://img.shields.io/github/deployments/Hamster45105/ddgemail-token/Production?logo=vercel&label=Deployment)
 
-This is a web application that generates a duck.com email-token for a given Hamster45105 and OTP. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
+This is a web application that will retrieve your duck.com email API key. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
-Your API token is needed for Bitwarden etc...
+Your API token is needed for Bitwarden, [Send From Duck](https://hamster45105.github.io/DuckAddressSend/) etc...
 
 ## Usage
 
 1. Enter your username and click "Next".
 2. Enter the OTP and click "Get Token".
-3. Your token will be displayed on the screen.
+3. Your API key will be displayed on the screen.
 
 Note: Don't spam getting a token for the same user because the DuckDuckGo service will block you and you won't be able to make any more requests for a while
 
@@ -24,6 +24,8 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 To prevent spam and bots, the website uses Google's reCatpcha. Here are their [terms of service](https://policies.google.com/terms) and [privacy policy](https://policies.google.com/privacy).
 
 It also uses Vercel's web analytics.
+
+No data is stored by the server, you can check the source code to see.
 
 ## Deployment
 
