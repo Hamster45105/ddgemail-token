@@ -10,13 +10,20 @@
 
 This is a web application that generates a duck.com email-token for a given Hamster45105 and OTP. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
+Your API token is needed for Bitwarden etc...
+
 ## Usage
 
-1. Enter your Hamster45105 and click "Authenticate".
+1. Enter your username and click "Next".
 2. Enter the OTP and click "Get Token".
 3. Your token will be displayed on the screen.
 
 Note: Don't spam getting a token for the same user because the DuckDuckGo service will block you and you won't be able to make any more requests for a while
+
+# Third Party Services
+To prevent spam and bots, the website uses Google's reCatpcha. Here are their [terms of service](https://policies.google.com/terms) and [privacy policy](https://policies.google.com/privacy).
+
+It also uses Vercel's web analytics.
 
 ## Deployment
 
