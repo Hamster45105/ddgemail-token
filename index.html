@@ -116,18 +116,47 @@
         border-radius: 5px;
         cursor: pointer;
     }
+
+    .instruction {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .instruction p {
+        margin: 0 0 10px;
+    }
+
+    .instruction a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+    .instruction a:hover {
+        text-decoration: underline;
+    }
   </style>
 </head>
 <body>
     <h1>DDG Email API Key Grabber</h1>
     <div id="usernamePage" class="page">
         <h1>Enter Username</h1>
+        <div class="instruction">
+            <p>For example, if your personal duck address is <i>"dax@duck.com"</i>, you would put <i>"dax"</i>.</p>
+            <p>If you don't know your personal duck address, please visit <a href="https://duckduckgo.com/email" target="_blank">duckduckgo.com/email</a>. Your username will be listed under: <i>"Autofill enabled in this browser for"</i>.</p>
+        </div>        
         <input type="text" id="username" placeholder="Username">
         <div class="g-recaptcha" data-sitekey="6Le4kCMpAAAAAPNK6UIZowxv4MAFxDzVCmV_yOpy" style="display: flex; justify-content: center;"></div>
         <button onclick="auth()">Next --></button>
     </div>
     <div id="otpPage" class="page" style="display: none;">
         <h1>Enter OTP</h1>
+        <div class="instruction">
+            <p>An email was just sent to you from DuckDuckGo.</p>
+            <p>Enter the OTP (the four random words) here. DO NOT CLICK ON THE LINK!</p>
+        </div>        
         <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
         <button onclick="getToken()">Get Key --></button>
@@ -135,6 +164,10 @@
     </div>
     <div id="tokenPage" class="page" style="display: none;">
         <h1>Your Token</h1>
+        <div class="instruction">
+            <p>This is your API key.</p>
+            <p>Copy it and save it in a password manager for easy access.</p>
+        </div>  
         <p id="tokenOutput"></p>
         <button onclick="copyToken()">Copy Key</button>
         <button onclick="resetPage()"><-- Start Over</button>
