@@ -119,7 +119,7 @@
   </style>
 </head>
 <body>
-    <h1>@duck.com API Key Grabber</h1>
+    <h1>DDG Email API Key Grabber</h1>
     <div id="usernamePage" class="page">
         <h1>Enter Username</h1>
         <input type="text" id="username" placeholder="Username">
@@ -130,13 +130,13 @@
         <h1>Enter OTP</h1>
         <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
-        <button onclick="getToken()">Get Token --></button>
+        <button onclick="getToken()">Get Key --></button>
         <button onclick="backToUsername()"><-- Back</button>
     </div>
     <div id="tokenPage" class="page" style="display: none;">
         <h1>Your Token</h1>
         <p id="tokenOutput"></p>
-        <button onclick="copyToken()">Copy Token</button>
+        <button onclick="copyToken()">Copy Key</button>
         <button onclick="resetPage()"><-- Start Over</button>
     </div>
     <div id="errorPopup">
@@ -198,7 +198,7 @@
             const otp = document.getElementById('otp').value.replace(/ /g, '+');
             
             const button = document.querySelector('button[onclick="getToken()"]');
-            setButtonLoading(button, 'Getting Token...');
+            setButtonLoading(button, 'Getting Key...');
 
             try {
                 const response = await fetch('/api/getToken', {
@@ -222,7 +222,7 @@
                 showErrorPopup(error.message)
             }
 
-            unSetButtonLoading(button, 'Get Token -->');
+            unSetButtonLoading(button, 'Get Key -->');
         }
 
         function backToUsername() {
