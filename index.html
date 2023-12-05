@@ -155,7 +155,7 @@
         <h1>Enter OTP</h1>
         <div class="instruction">
             <p>An email was just sent to you from DuckDuckGo.</p>
-            <p>Enter the OTP (the four random words) here. DO NOT CLICK ON THE LINK!</p>
+            <p>Enter the OTP (the four random words) OR copy and paste the link here. DO NOT CLICK ON THE LINK!</p>
         </div>        
         <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
@@ -227,11 +227,18 @@
         }
 
         async function getToken() {
+            let otp = document.getElementById('otp').value.replace(/ /g, '+');
             const username = document.getElementById('username').value;
-            const otp = document.getElementById('otp').value.replace(/ /g, '+');
             
             const button = document.querySelector('button[onclick="getToken()"]');
             setButtonLoading(button, 'Getting Key...');
+
+            const otpPattern = /https:\/\/duckduckgo\.com\/email\/login\?otp=(\w+-\w+-\w+-\w+)&user=\w+/;
+            const match = otp.match(otpPattern);
+            if (match) {
+                otp = match[1].replace(/-/g, ' '); 
+                document.getElementById('otp').value = otp; 
+            }
 
             try {
                 const response = await fetch('/api/getToken', {
