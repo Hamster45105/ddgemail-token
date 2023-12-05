@@ -179,13 +179,13 @@
             <button onclick="closeErrorPopup()">Dismiss</button>
         </div>
     </div>
-    <footer style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: #f8f9fa; color: black; text-align: center; padding: 10px 0;">
-      <a href="https://github.com/Hamster45105/ddgemail-token">
-        <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social&logo=github&label=Stars">
-      </a>
-      <div id="google_translate_element"></div>
-      <p>Made with ❤️ by <a href="https://github.com/Hamster45105" target="_blank">Hamster45105</a></p>
-  </footer>
+    <footer style="position: relative; left: 0; bottom: 0; width: 100%; text-align: center; padding: 10px 0; font-family: Arial, sans-serif; margin-top: 20px;">
+        <a href="https://github.com/Hamster45105/ddgemail-token">
+          <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social&logo=github&label=Stars">
+        </a>
+        <div id="google_translate_element"></div>
+        <p style="color: #333;">Made with ❤️ by <a href="https://github.com/Hamster45105" target="_blank" style="color: #333; text-decoration: none;">Hamster45105</a></p>
+      </footer>
   <script src="https://js.hcaptcha.com/1/api.js"async defer></script>
     <script>
         async function auth() {
@@ -310,15 +310,6 @@
             document.getElementById("errorPopup").style.display = "none";
         }
 
-        ['otp', 'username'].forEach(function(id) {
-            document.getElementById(id).addEventListener('focus', function() {
-                document.querySelector('footer').style.display = 'none';
-            });
-
-            document.getElementById(id).addEventListener('blur', function() {
-                document.querySelector('footer').style.display = 'block';
-            });
-        });
     </script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
