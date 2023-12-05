@@ -267,6 +267,7 @@
 
         function backToUsername() {
             grecaptcha.reset();
+            document.getElementById('otp').value = '';
             document.getElementById('otpPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
         }
