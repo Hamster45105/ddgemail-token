@@ -1,17 +1,32 @@
 const axios = require('axios');
 require('dotenv').config();
+const qs = require('qs');
 
 module.exports = async (req, res) => {
-  if (!req.body || !req.body.username || !req.body.recaptchaResponse) {
+  if (!req.body || !req.body.username || !req.body.hcaptchaResponse) {
     return res.status(400).send({ error: 'Please enter username and complete captcha' });
   }
 
   const username = req.body.username;
-  const recaptchaResponse = req.body.recaptchaResponse;
+  const hcaptchaResponse = req.body.hcaptchaResponse;
 
-  const recaptchaVerifyResponse = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`);
-  if (!recaptchaVerifyResponse.data.success) {
-    return res.status(400).send({ error: 'reCAPTCHA verification failed' });
+  const data = qs.stringify({
+    'response': hcaptchaResponse,
+    'secret': process.env.HCAPTCHA_SECRET_KEY,
+  });
+
+  const config = {
+    method: 'post',
+    url: 'https://api.hcaptcha.com/siteverify',
+    headers: { 
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    data : data
+  };
+
+  const hcaptchaVerifyResponse = await axios(config);
+  if (!hcaptchaVerifyResponse.data.success) {
+    return res.status(400).send({ error: 'hCaptcha verification failed. Error code: ' + hcaptchaVerifyResponse.data['error-codes'] });
   }
 
   try {

@@ -26,9 +26,9 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 If you can't get the key because an error occured, open an issue.
 
 ## Third Party Services
-To prevent spam and bots, the website uses Google's reCatpcha. Here are their [terms of service](https://policies.google.com/terms) and [privacy policy](https://policies.google.com/privacy).
+To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
 
-It also uses Vercel's web analytics. You can find out more about how this works [here](https://vercel.com/docs/analytics)
+It also uses Vercel's web analytics. You can find out more about how this works [here](https://vercel.com/docs/analytics).
 
 No data is stored by the server, you can check the source code to see.
 

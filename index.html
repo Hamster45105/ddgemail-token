@@ -148,7 +148,7 @@
             <p>If you don't know your personal duck address, please visit <a href="https://duckduckgo.com/email" target="_blank">duckduckgo.com/email</a>. Your username will be listed under: <i>"Autofill enabled in this browser for"</i>.</p>
         </div>        
         <input type="text" id="username" placeholder="Username">
-        <div class="g-recaptcha" data-sitekey="6Le4kCMpAAAAAPNK6UIZowxv4MAFxDzVCmV_yOpy" style="display: flex; justify-content: center;"></div>
+        <div class="h-captcha" data-sitekey="92f19740-3042-4fa0-b878-c38b0301b0c3" style="display: flex; justify-content: center;"></div>
         <button onclick="auth()">Next --></button>
     </div>
     <div id="otpPage" class="page" style="display: none;">
@@ -186,11 +186,11 @@
       <div id="google_translate_element"></div>
       <p>Made with ❤️ by <a href="https://github.com/Hamster45105" target="_blank">Hamster45105</a></p>
   </footer>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://js.hcaptcha.com/1/api.js"async defer></script>
     <script>
         async function auth() {
             let username = document.getElementById('username').value;
-            const recaptchaResponse = grecaptcha.getResponse();
+            const hcaptchaResponse = hcaptcha.getResponse();
             
             const button = document.querySelector('button[onclick="auth()"]');
             setButtonLoading(button, 'Authenticating...');
@@ -206,7 +206,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username, recaptchaResponse })
+                    body: JSON.stringify({ username, hcaptchaResponse })
                 });
 
                 if (!response.ok) {
@@ -219,7 +219,7 @@
                 document.getElementById('emailDisplay').textContent = document.getElementById('username').value + '@duck.com';
                 document.getElementById('otpPage').style.display = 'block';
             } catch (error) {
-                grecaptcha.reset();
+                hcaptcha.reset();
                 showErrorPopup(error.message)
             }
 
@@ -266,14 +266,14 @@
         }
 
         function backToUsername() {
-            grecaptcha.reset();
+            hcaptcha.reset();
             document.getElementById('otp').value = '';
             document.getElementById('otpPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
         }
 
         function resetPage() {
-            grecaptcha.reset();
+            hcaptcha.reset();
             document.getElementById('tokenPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
             document.getElementById('otp').value = '';
