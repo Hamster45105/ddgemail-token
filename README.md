@@ -30,7 +30,7 @@ To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/w
 
 For translations, the site uses the Google Translate widget.
 
-As the site uses Vercel, it can use Vercel's web analytics. You can find out more about how this works [here](https://vercel.com/docs/analytics).
+As the site uses Vercel, it can (and does) use Vercel's web analytics. You can find out more about how this works [here](https://vercel.com/docs/analytics).
 
 No data is stored by the server, you can check the source code to see.
 
