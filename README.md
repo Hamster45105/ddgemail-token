@@ -36,7 +36,7 @@ No data is stored by the server, you can check the source code to see.
 
 This project is deployed with Vercel. To host your own version on Vercel, click the button below.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token&env=RECAPTCHA_SECRET_KEY&envDescription=reCaptcha%20secret%20key%20required%20to%20verify%20requests&envLink=https%3A%2F%2Fwww.google.com%2Frecaptcha%2Fadmin%2Fcreate&project-name=ddgemail-token&repository-name=ddgemail-token)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token&env=HCAPTCHA_SECRET_KEY&envDescription=reCaptcha%20secret%20key%20required%20to%20verify%20requests&envLink=https%3A%2F%2Fwww.google.com%2Frecaptcha%2Fadmin%2Fcreate&project-name=ddgemail-token&repository-name=ddgemail-token)
 
 ## License
 
