@@ -170,6 +170,7 @@
         </div>  
         <p id="tokenOutput"></p>
         <button onclick="copyToken()">Copy Key</button>
+        <button onclick="exportKey()" style="background-color: #ff6347; color: white;">Send To <b>Send From Duck</b></button>        
         <button onclick="resetPage()"><-- Start Over</button>
     </div>
     <div id="errorPopup">
@@ -287,6 +288,11 @@
             const button = document.querySelector('button[onclick="copyToken()"]');
             button.textContent = "Copied!";
             button.style.backgroundColor = "#21ceb7";
+        }
+        
+        function exportKey() {
+            var token = document.getElementById('tokenOutput').innerText;
+            window.open("https://hamster45105.github.io/DuckAddressSend/auth?imported=true&key=" + token, '_blank');
         }
 
         function setButtonLoading(button, loadingText) {
