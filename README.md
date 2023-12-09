@@ -6,7 +6,7 @@
 
 [![Reported Bugs](https://img.shields.io/github/issues/Hamster45105/ddgemail-token/bug?label=Reported%20Bugs&style=flat&color=cc4453)](https://github.com/Hamster45105/ddgemail-token/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 [![Current License](https://img.shields.io/github/license/Hamster45105/ddgemail-token?label=License&style=flat)](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE)
-![Deployment Status](https://img.shields.io/github/deployments/Hamster45105/ddgemail-token/Production?logo=vercel&label=Deployment)
+[![Deployment Status](https://img.shields.io/github/deployments/Hamster45105/ddgemail-token/Production?logo=vercel&label=Deployment)](https://github.com/Hamster45105/ddgemail-token/deployments/Production)
 
 This is a web application that will retrieve your DDG (DuckDuckGo) email API key. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
@@ -16,10 +16,7 @@ Because DuckDuckGo does not officially support using third-party services with t
 
 ## Usage
 
-1. Enter your username, complete the captcha and click "Next".
-2. Wait for an email to arrive from DuckDuckGo.
-3. Enter the OTP from the email (it will be four random words) and click "Get Key". Note: You can't click the link, it won't work.
-4. Your API key will be displayed on the screen.
+The website has instructions to help you through the process.
 
 Note: Don't spam getting a token for the same user because the DuckDuckGo service will block you and you won't be able to make any more requests for a while.
 
@@ -44,4 +41,7 @@ This project is deployed with Vercel. To host your own version on Vercel, click 
 
 This project is licensed under the GNU General Public License v3.0.
 
-See LICENSE file for details
+See [LICENSE](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE) file for details.
+
+
+![Alt text](https://www.gnu.org/graphics/gplv3-127x51.png)
