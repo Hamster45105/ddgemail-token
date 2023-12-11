@@ -17,6 +17,8 @@ Your API key is needed for Bitwarden, [Send From Duck](https://hamster45105.gith
 
 Because DuckDuckGo does not officially support using third-party services with their email service, it is hard to get the API key unless you know how to use developer tools. This site is designed to make it easier.
 
+If for whatever reason you don't want to use this site for getting your key, you can find other more difficult ways to get your key [on this wiki](https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key). If your worried about security/privacy check out the [third party services statement](https://github.com/Hamster45105/ddgemail-token#third-party-services).
+
 ## Usage
 
 The website has instructions to help you through the process.
@@ -34,7 +36,7 @@ For translations, the site uses the Google Translate widget.
 
 As the site uses Vercel, it can (and does) use Vercel's web analytics. You can find out more about how this works [here](https://vercel.com/docs/analytics).
 
-No data is stored by the server, you can check the source code to see. If you really don't want to use the site, you can find other ways to get your key [on this wiki](https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key).
+No data is stored by the server and no one can read your personal duck address or API keys because the site connects to DuckDuckGo's servers directly and no data is stored. If your unsure you can check the source code or host your own version.
 
 ## Deployment
 
