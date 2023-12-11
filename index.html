@@ -177,7 +177,7 @@
             <p>Copy it and save it in a password manager for easy access.</p>
         </div>  
         <p id="tokenOutput"></p>
-        <button onclick="copyToken()">Copy Key</button>
+        <button id="copyButton" onclick="copyToken()">Copy Key</button>
         <button onclick="exportKey()">Send To <b>Send From Duck</b></button>        
         <button onclick="resetPage()"><-- Start Over</button>
     </div>
@@ -292,6 +292,8 @@
             document.getElementById('usernamePage').style.display = 'block';
             document.getElementById('otp').value = '';
             document.getElementById('tokenOutput').innerText = '';
+            document.getElementById('copyButton').textContent = 'Copy Key';
+            document.getElementById('copyButton').style.backgroundColor = '#4CAF50';
         }
 
         function copyToken() {
