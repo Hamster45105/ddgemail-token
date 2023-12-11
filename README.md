@@ -7,6 +7,9 @@
 [![Reported Bugs](https://img.shields.io/github/issues/Hamster45105/ddgemail-token/bug?label=Reported%20Bugs&style=flat&color=cc4453)](https://github.com/Hamster45105/ddgemail-token/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 [![Current License](https://img.shields.io/github/license/Hamster45105/ddgemail-token?label=License&style=flat)](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE)
 [![Deployment Status](https://img.shields.io/github/deployments/Hamster45105/ddgemail-token/Production?logo=vercel&label=Deployment)](https://github.com/Hamster45105/ddgemail-token/deployments/Production)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fddgemail-token.vercel.app%2F&label=Website%20Status)](https://isitup.org/ddgemail-token.vercel.app)
+[![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/Hamster45105/ddgemail-token?label=Commits)](https://github.com/Hamster45105/ddgemail-token/graphs/commit-activity)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Hamster45105/ddgemail-token/main?label=Last%20Commit%20(main))](https://github.com/Hamster45105/ddgemail-token/commits/main)
 
 This is a web application that will retrieve your DDG (DuckDuckGo) email API key. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
@@ -25,11 +28,13 @@ If you can't get the key because an error occured, open an issue.
 ## Third Party Services
 To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
 
+hCaptcha aims to ensure seamless access for all users while maintaining security. For this reason they offer accessibility options for those users that are unable to complete visual challenges. You can learn more about how this works and how to sign up [at their website](https://www.hcaptcha.com/accessibility).
+
 For translations, the site uses the Google Translate widget.
 
 As the site uses Vercel, it can (and does) use Vercel's web analytics. You can find out more about how this works [here](https://vercel.com/docs/analytics).
 
-No data is stored by the server, you can check the source code to see.
+No data is stored by the server, you can check the source code to see. If you really don't want to use the site, you can find other ways to get your key [on this wiki](https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key).
 
 ## Deployment
 
@@ -44,4 +49,4 @@ This project is licensed under the GNU General Public License v3.0.
 See [LICENSE](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE) file for details.
 
 
-![Alt text](https://www.gnu.org/graphics/gplv3-127x51.png)
+![GPLV3 Logo](https://www.gnu.org/graphics/gplv3-127x51.png)
