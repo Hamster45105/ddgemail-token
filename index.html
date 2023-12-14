@@ -361,6 +361,14 @@
             button.style.backgroundColor = "#4CAF50";
         }
         
+        // Onload function
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            if (username) {
+                document.getElementById('username').value = username;
+            }
+        }
         // Error popup handling
         function showErrorPopup(errorMessage) {
             document.getElementById("error-message").innerHTML = errorMessage;

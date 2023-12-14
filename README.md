@@ -27,6 +27,9 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 
 If you can't get the key because an error occured, open an issue.
 
+## Integrate YOUR service
+If you are developing a service that requires users to get their DuckDuckGo API key, just redirect them to "https://ddgemail-token.vercel.app?username=[username]/" which will automatically autofill the username!
+
 ## Third Party Services
 To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
 
