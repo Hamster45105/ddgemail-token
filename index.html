@@ -293,7 +293,7 @@
 
                 // If the callback URL is present, replace [API_KEY] with the token and redirect the user
                 if (callbackUrl) {
-                    const redirectUrl = callbackUrl.replace('[API_KEY]', data.token);
+                    const redirectUrl = callbackUrl.replace('__API_KEY__', data.token);
                     window.location.href = redirectUrl;
                 } else {
                     // Change page
@@ -366,7 +366,6 @@
             button.style.backgroundColor = "#4CAF50";
         }
         
-        // Onload function
         window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get('username');
@@ -380,11 +379,8 @@
         if (callbackUrl) {
             const webName = urlParams.get('app_name');
 
-            // Decode the callback URL
-            const decodedCallbackUrl = decodeURIComponent(callbackUrl);
-
-            // Check if the decoded callback URL contains [API_KEY]
-            if (!decodedCallbackUrl.includes('[API_KEY]')) {
+            // Check if the callback URL contains __API_KEY__
+            if (!callbackUrl.includes('__API_KEY__')) {
                 showErrorPopup("Invalid callback URL - No API key detected!")
                 removeCallbackParams();
                 return;
@@ -393,7 +389,7 @@
             // Check if the callback URL is a valid URL
             let url;
             try {
-                url = new URL(decodedCallbackUrl.replace('[API_KEY]', "examplekey"));
+                url = new URL(callbackUrl.replace('__API_KEY__', "examplekey"));
             } catch (_) {
                 showErrorPopup("Invalid callback URL - Not a valid URL!");
                 removeCallbackParams();
@@ -409,7 +405,7 @@
                 btn.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
             }  
         } 
-        }
+    }
 
         // Remove params
         function removeCallbackParams() {

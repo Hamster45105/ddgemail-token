@@ -32,7 +32,7 @@ If you are building an app that requires users to get their DDG API Key, DDG Ema
 
 Just redirect them to: https://ddgemail-token.vercel.app?callback=CALLBACK_URL&app_name=APP_NAME
 
-The callback url should be a valid URL where the site can input the key. Just put [API_KEY] where you want the API key to be inserted. For example `https://example.com/import_key=[API_KEY]`
+The callback url should be a valid URL where the site can input the key. Just put [API_KEY] where you want the API key to be inserted. For example `https://example.com/import_key=__API_KEY__`
 
 The app name is optional, however if specified, when the user is required to get the key the button will display `Continue to: App Name` instead of `Get Key -->`
 
