@@ -382,7 +382,7 @@
 
             // Check if the callback URL contains [API_KEY]
             if (!callbackUrl.includes('[API_KEY]')) {
-                showErrorPopup("Invalid callback URL - No API key detected!")
+                showErrorPopup("Invalid callback URL - No API key slot detected!")
                 removeCallbackParams();
                 return;
             }
