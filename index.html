@@ -168,7 +168,7 @@
         </div>        
         <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
-        <button onclick="getToken()">Get Key --></button>
+        <button id="getKey" onclick="getToken()">Get Key --></button>
         <button onclick="backToUsername()"><-- Back</button>
     </div>
     <div id="tokenPage" class="page" style="display: none;">
@@ -288,9 +288,20 @@
                 const data = await response.json();
                 document.getElementById('tokenOutput').innerText = data.token;
 
-                // Change page
-                document.getElementById('otpPage').style.display = 'none';
-                document.getElementById('tokenPage').style.display = 'block';
+                // Get the callback URL from the URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const callbackUrl = urlParams.get('callback');
+
+                // If the callback URL is present, replace [API_KEY] with the token and redirect the user
+                if (callbackUrl) {
+                    const redirectUrl = callbackUrl.replace('[API_KEY]', data.token);
+                    window.location.href = redirectUrl;
+                } else {
+                    // Change page
+                    document.getElementById('otpPage').style.display = 'none';
+                    document.getElementById('tokenPage').style.display = 'block';
+                }
+
             } catch (error) {
                 // Show error if occured
                 showErrorPopup(error.message)
@@ -363,12 +374,54 @@
         
         // Onload function
         window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const username = urlParams.get('username');
-            if (username) {
-                document.getElementById('username').value = username;
-            }
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        if (username) {
+            document.getElementById('username').value = username;
         }
+
+        // Get the callback URL and web name from the URL parameters
+        const callbackUrl = urlParams.get('callback');
+        
+        if (callbackUrl) {
+            const webName = urlParams.get('app_name');
+
+            // Check if the callback URL contains [API_KEY]
+            if (!callbackUrl.includes('[API_KEY]')) {
+                showErrorPopup("Invalid callback URL - No API key detected!")
+                removeCallbackParams();
+                return;
+            }
+
+            // Check if the callback URL is a valid URL
+            let url;
+            try {
+                url = new URL(callbackUrl.replace('[API_KEY]', "examplekey"));
+            } catch (_) {
+                showErrorPopup("Invalid callback URL - Not a valid URL!");
+                removeCallbackParams();
+                return;
+            }
+
+            // If app name is present, modify the button
+            if (webName) {
+                // Get the button element
+                const btn = document.getElementById('getKey');
+
+                // Set the button text
+                btn.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
+            }  
+        } 
+        }
+
+        // Remove params
+        function removeCallbackParams() {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('callback');
+            url.searchParams.delete('app_name');
+            window.history.replaceState({}, '', url);
+        }
+
         // Error popup handling
         function showErrorPopup(errorMessage) {
             document.getElementById("error-message").innerHTML = errorMessage;
