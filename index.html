@@ -138,12 +138,6 @@
             text-decoration: underline;
         }
 
-        .captcha-container {
-            overflow-x: auto;
-            display: flex;
-            justify-content: center;
-        }
-
   </style>
 </head>
 <body>
@@ -155,9 +149,7 @@
             <p>If you don't know your username, please visit <a href="https://duckduckgo.com/email" target="_blank">duckduckgo.com/email</a>. It will will be listed under: <i>"Autofill enabled in this browser for"</i>.</p>
         </div>        
         <input type="text" id="username" placeholder="Username">
-        <div class="captcha-container">
-            <div class="h-captcha" data-sitekey="92f19740-3042-4fa0-b878-c38b0301b0c3"></div>
-        </div>
+        <div class="h-captcha" data-sitekey="92f19740-3042-4fa0-b878-c38b0301b0c3"></div>
         <button onclick="auth()">Next --></button>
     </div>
     <div id="otpPage" class="page" style="display: none;">
