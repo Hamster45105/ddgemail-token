@@ -306,8 +306,12 @@
                 showErrorPopup(error.message)
             }
             
-            // Remove button loading status
-            unSetButtonLoading(button, 'Get Key -->');
+            if (callbackUrl) {
+              const webName = urlParams.get('app_name');
+              unSetButtonLoading(button, webName);    
+            } else {
+              unSetButtonLoading(button, 'Get Key -->');
+            }
         }
         
         // Page changing
