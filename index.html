@@ -255,7 +255,10 @@
             let otp = document.getElementById('otp').value.replace(/ /g, '+');
             const username = document.getElementById('username').value;
             const button = document.querySelector('button[onclick="getToken()"]');
-            
+            const urlParams = new URLSearchParams(window.location.search);
+            const callbackUrl = urlParams.get('callback');
+            const webName = urlParams.get('app_name');
+
             // Change button to loading
             setButtonLoading(button, 'Getting Key...');
 
@@ -288,8 +291,6 @@
                 document.getElementById('tokenOutput').innerText = data.token;
 
                 // Get the callback URL from the URL parameters
-                const urlParams = new URLSearchParams(window.location.search);
-                const callbackUrl = urlParams.get('callback');
 
                 // If the callback URL is present, replace [API_KEY] with the token and redirect the user
                 if (callbackUrl) {
@@ -307,10 +308,11 @@
             }
             
             if (callbackUrl) {
-              const webName = urlParams.get('app_name');
-              unSetButtonLoading(button, webName);    
+                button.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
+                button.disabled = false;
+                button.style.backgroundColor = "#4CAF50"; 
             } else {
-              unSetButtonLoading(button, 'Get Key -->');
+                unSetButtonLoading(button, 'Get Key -->');
             }
         }
         
