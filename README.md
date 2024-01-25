@@ -59,7 +59,7 @@ No data is stored by the server and no one can read your personal duck address o
 
 This project is deployed with Vercel. To host your own version on Vercel, click the button below.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token&env=HCAPTCHA_SECRET_KEY&envDescription=hCaptcha%20secret%20key%20required%20to%20verify%20requests&project-name=ddgemail-token&repository-name=ddgemail-token)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token%2F&env=HCAPTCHA_SECRET_KEY&envDescription=Create%20a%20hCaptcha%20secret%20key%20to%20protect%20your%20site%20from%20bots.&envLink=https%3A%2F%2Fdashboard.hcaptcha.com%2Fsites%2Fnew&project-name=ddgemail-grabber&repository-name=ddgemail-grabber)
 
 ## License
 
