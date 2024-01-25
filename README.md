@@ -37,9 +37,9 @@ The callback url should be a valid URL where the site can input the key. Just pu
 The app name is optional, however if specified, when the user is required to get the key the button will display `Continue to: App Name` instead of `Get Key -->`
 
 > :warning: **Note** <br>
-It is important that you encode the URL if your own URL has parameters in it. A site like [URL Encode Online](https://www.urlencoder.io/) should do the trick.
+It is important that you encode the callback URL. A site like [URL Encode Online](https://www.urlencoder.io/) should do the trick.
 
-URL encoding is necessary when the callback URL contains its own parameters. Without encoding, these parameters could be misinterpreted as parameters of the main URL, which could cause errors.
+URL encoding is necessary to ensure that any parameters in the callback URL will not be misinterpreted as parameters of the main URL, which could cause errors.
 
 ## Third Party Services
 To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
