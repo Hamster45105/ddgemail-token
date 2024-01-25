@@ -380,9 +380,12 @@
         if (callbackUrl) {
             const webName = urlParams.get('app_name');
 
-            // Check if the callback URL contains [API_KEY]
-            if (!callbackUrl.includes('[API_KEY]')) {
-                showErrorPopup("Invalid callback URL - No API key slot detected!")
+            // Decode the callback URL
+            const decodedCallbackUrl = decodeURIComponent(callbackUrl);
+
+            // Check if the decoded callback URL contains [API_KEY]
+            if (!decodedCallbackUrl.includes('[API_KEY]')) {
+                showErrorPopup("Invalid callback URL - No API key detected!")
                 removeCallbackParams();
                 return;
             }
@@ -390,7 +393,7 @@
             // Check if the callback URL is a valid URL
             let url;
             try {
-                url = new URL(callbackUrl.replace('[API_KEY]', "examplekey"));
+                url = new URL(decodedCallbackUrl.replace('[API_KEY]', "examplekey"));
             } catch (_) {
                 showErrorPopup("Invalid callback URL - Not a valid URL!");
                 removeCallbackParams();
