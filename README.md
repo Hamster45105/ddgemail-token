@@ -39,6 +39,8 @@ The app name is optional, however if specified, when the user is required to get
 > :warning: **Note** <br>
 It is important that you encode the URL if your own URL has parameters in it. A site like [URL Encode Online](https://www.urlencoder.io/) should do the trick.
 
+URL encoding is necessary when the callback URL contains its own parameters. Without encoding, these parameters could be misinterpreted as parameters of the main URL, which could cause errors.
+
 ## Third Party Services
 To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
 
