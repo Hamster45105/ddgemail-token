@@ -189,9 +189,6 @@
             <button onclick="closeErrorPopup()">Dismiss</button>
         </div>
     </div>
-    <div id="autofillBanner" style="opacity: 0; transition: opacity 0.5s; position: fixed; bottom: 20px; right: 20px; background-color: #44c767; padding: 10px 20px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; box-shadow: 0px 2px 15px rgba(0,0,0,0.1); border-radius: 15px;">
-        <p style="margin: 0; font-size: 18px; color: #fff; font-weight: 500;">Your username has been autofilled! Complete the captcha and click next to continue.</p>
-    </div>   
     <footer style="position: relative; left: 0; bottom: 0; width: 100%; text-align: center; padding: 10px 0; font-family: Arial, sans-serif; margin-top: 20px;">
         <a href="https://github.com/Hamster45105/ddgemail-token">
           <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social&logo=github&label=Stars">
@@ -370,14 +367,6 @@
             const username = urlParams.get('username');
             if (username) {
                 document.getElementById('username').value = username;
-                const autofillBanner = document.getElementById('autofillBanner');
-                    autofillBanner.style.display = 'flex';
-                    autofillBanner.style.opacity = '1';
-
-                    // Hide the banner after 10 seconds
-                    setTimeout(function() {
-                        autofillBanner.style.opacity = '0';
-                    }, 10000);
             }
         }
         // Error popup handling
