@@ -48,7 +48,7 @@ It is important that you encode the callback URL. A site like [URL Encode Online
 If the URL is invalid, an error message will be displayed and both the app name and callback will be removed from the parameters.
 
 ### App Name
-The app name is optional, however if specified, when the user is required to get the key the button will display `Continue to: *App Name*` instead of `Get Key -->`
+The app name is optional, however if specified, when the user is required to get the key the button will display `Continue to: *App Name*` instead of `Get Key -->`. It will also be displayed on the third party app warning popup instead of `an unnamed app`.
 
 Also: make sure if the app name has spaces these are replaced with `%20`, for example `My%20App`
 
