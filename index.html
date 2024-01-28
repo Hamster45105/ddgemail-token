@@ -246,7 +246,7 @@
             </ul>
             <p>If you choose to continue, the app will not be able to access your API key until you enter the OTP on the second page and continue.</p>
             <p>NOTE: Your API key cannot be reset, so you cannot revoke access from any apps.</address></p>
-            <button style="background-color: #ff0000;" onclick="window.history.back()">Go Back</button>
+            <button style="background-color: #ff0000;" onclick="authCancel()">Go Back</button>
             <button style="background-color: #28a745;" onclick="document.getElementById('permissionPopup').style.display = 'none'">Continue</button>
         </div>
     </div>
@@ -409,6 +409,12 @@
             document.getElementById('tokenPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
             
+        }
+
+        function authCancel() {
+            const callbackUrl = urlParams.get('callback');
+            const redirectUrl = callbackUrl.replace('__API_KEY__', 'USER_CANCELLED');
+            window.location.href = redirectUrl;
         }
         
         // Button functions
