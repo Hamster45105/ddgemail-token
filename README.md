@@ -28,29 +28,10 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 If you can't get the key because an error occured, open an issue.
 
 ## Integrate YOUR service
-If you are building an app that requires users to get their DDG API Key, DDG Email API Key Grabber makes it easier for users to do that!
+Are you building an app which requires users to input a DuckDuckGo email API Key? DDG Email API Key Grabber makes it easier for you to get the key!
 
-Just redirect them to: `https://ddgemail-token.vercel.app?callback=CALLBACK_URL&app_name=APP_NAME`
+Visit the [developer docs](https://github.com/Hamster45105/ddgemail-token/blob/main/DEV_DOCS.md) for more info
 
-Here is an example that you can try out: 
-
-https://ddgemail-token.vercel.app?callback=https%3A%2F%2Fexample.com%2Fimport_key%3D__API_KEY__&app_name=My%20App
-
-
-### Callback URL
-
-The callback URL should be a valid URL where the site can input the key. Just put `__API_KEY__` where you want the API key to be inserted. For example:
-
-`https://example.com/import_key=__API_KEY__` which is, when encoded: `https%3A%2F%2Fexample.com%2Fimport_key%3D__API_KEY__`
-
-It is important that you encode the callback URL. A site like [URL Encode Online](https://www.urlencoder.io/) should do the trick. URL encoding is necessary to ensure that any parameters in the callback URL will not be misinterpreted as parameters of the main URL, which could cause errors
-
-If the URL is invalid, an error message will be displayed and both the app name and callback will be removed from the parameters.
-
-### App Name
-The app name is optional, however if specified, when the user is required to get the key the button will display `Continue to: *App Name*` instead of `Get Key -->`. It will also be displayed on the third party app warning popup instead of `an unnamed app`.
-
-Also: make sure if the app name has spaces these are replaced with `%20`, for example `My%20App`
 
 ## Third Party Services
 To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
