@@ -412,6 +412,7 @@
         }
 
         function authCancel() {
+            const urlParams = new URLSearchParams(window.location.search);
             const callbackUrl = urlParams.get('callback');
             const redirectUrl = callbackUrl.replace('__API_KEY__', 'USER_CANCELLED');
             window.location.href = redirectUrl;
