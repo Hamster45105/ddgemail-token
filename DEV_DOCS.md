@@ -35,7 +35,7 @@ A user's API key allows you to generate private duck addresses on their behalf.
 
 ## How do I generate private duck addresses on a user's behalf?
 
-Send a POST request to `https://quack.duckduckgo.com/api/email/addresses``
+Send a POST request to `https://quack.duckduckgo.com/api/email/addresses`
 
 With these headers:
 
@@ -43,7 +43,7 @@ With these headers:
 
 `Content-Type`: `application/json`
 
-**NOTE:** This is a reverse engineered API, not officially supported by DuckDuckGo for third-party applications.
+**NOTE:** This API is not officially supported by DuckDuckGo for third-party applications.
 
 ## Can users re-generate their API key?
 
