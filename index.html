@@ -141,9 +141,34 @@
             animation: fade-in 0.5s ease-out;
             width: 80%;
             max-width: 500px;
-            height: 80%;
-            max-height: 600px;
+            max-height: 90%;
             overflow: auto;
+        }
+
+        #permissionPopup .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #permissionPopup button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        #permissionPopup button:nth-child(1) {
+            background-color: #ff0000;
+        }
+
+        #permissionPopup button:nth-child(2) {
+            background-color: #28a745;
         }
 
         #permissionPopup h2 {
@@ -160,17 +185,6 @@
 
         #permissionPopup ul li strong {
             color: #333;
-        }
-
-        #permissionPopup button {
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px 5px;
-            width: calc(50% - 10px);
         }
 
         .instruction {
@@ -242,12 +256,13 @@
             <h3 id="popup-title"></h3>
             <ul>
                 <li><strong>This app WILL be able to:</strong> Access your API key which will allow it to generate private duck addresses.</li>
-                <li><strong>This app WILL NOT be able to:</strong> Access your email associated with your account OR your personal duck address.</li>
+                <li><strong>This app WILL NOT be able to:</strong> Access the email associated with your account OR your personal duck address.</li>
             </ul>
-            <p>If you choose to continue, the app will not be able to access your API key until you enter the OTP on the second page and continue.</p>
             <p>NOTE: Your API key cannot be reset, so you cannot revoke access from any apps.</address></p>
-            <button style="background-color: #ff0000;" onclick="authCancel()">Go Back</button>
-            <button style="background-color: #28a745;" onclick="document.getElementById('permissionPopup').style.display = 'none'">Continue</button>
+            <div class ="button-container">
+                <button style="background-color: #ff0000;" onclick="authCancel()">Go Back</button>
+                <button style="background-color: #28a745;" onclick="document.getElementById('permissionPopup').style.display = 'none'">Continue</button>
+            </div>
         </div>
     </div>
     <footer style="position: relative; left: 0; bottom: 0; width: 100%; text-align: center; padding: 10px 0; font-family: Arial, sans-serif; margin-top: 20px;">
