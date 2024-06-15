@@ -18,10 +18,10 @@ module.exports = async (req, res) => {
   const config = {
     method: 'post',
     url: 'https://api.hcaptcha.com/siteverify',
-    headers: { 
+    headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    data : data
+    data: data
   };
 
   const hcaptchaVerifyResponse = await axios(config);
@@ -31,12 +31,12 @@ module.exports = async (req, res) => {
 
   try {
     await axios.get(`https://quack.duckduckgo.com/api/auth/loginlink?user=${username}`, {
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0'
-        }
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/113.0'
+      }
     });
   } catch (error) {
-      return res.status(500).send({ error: 'An error occurred, please try again later' });
+    return res.status(500).send({ error: 'An error occurred, please try again later' });
   }
   res.status(200).send({ message: 'Email sent' });
 };
