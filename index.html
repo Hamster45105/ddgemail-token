@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <title>DDG API Key Grabber</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -10,14 +11,14 @@
             background-color: #f4f4f4;
             color: #333;
         }
-  
+
         h1 {
             text-align: center;
             font-size: 2.5em;
             color: #333;
             margin-bottom: 50px;
         }
-  
+
         .page {
             text-align: center;
             margin: 0 auto;
@@ -28,13 +29,14 @@
             border-radius: 4px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-  
+
         .page h1 {
             font-size: 2em;
             margin-bottom: 20px;
         }
-  
-        .page input[type="text"], .page input[type="password"] {
+
+        .page input[type="text"],
+        .page input[type="password"] {
             width: 90%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -87,7 +89,7 @@
             z-index: 999;
         }
 
-        #errorPopup > div {
+        #errorPopup>div {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -128,7 +130,7 @@
             z-index: 999;
         }
 
-        #permissionPopup > div {
+        #permissionPopup>div {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -207,17 +209,19 @@
         .instruction a:hover {
             text-decoration: underline;
         }
-
-  </style>
+    </style>
 </head>
+
 <body>
     <h1>DDG Email API Key Grabber</h1>
     <div id="usernamePage" class="page">
         <h1>Enter Username</h1>
         <div class="instruction">
             <p>Enter your DDG email username here.</p>
-            <p>If you don't know your username, please visit <a href="https://duckduckgo.com/email" target="_blank">duckduckgo.com/email</a>. It will will be listed under: <i>"Autofill enabled in this browser for"</i>.</p>
-        </div>        
+            <p>If you don't know your username, please visit <a href="https://duckduckgo.com/email"
+                    target="_blank">duckduckgo.com/email</a>. It will will be listed under: <i>"Autofill enabled in this
+                    browser for"</i>.</p>
+        </div>
         <input type="text" id="username" placeholder="Username">
         <div class="h-captcha" data-sitekey="92f19740-3042-4fa0-b878-c38b0301b0c3"></div>
         <button onclick="auth()">Next --></button>
@@ -227,7 +231,7 @@
         <div class="instruction">
             <p>An email was just sent to you from DuckDuckGo.</p>
             <p>Enter the OTP (the four random words) OR copy and paste the link here.</p>
-        </div>        
+        </div>
         <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
         <button id="getKey" onclick="getToken()">Get Key --></button>
@@ -238,7 +242,7 @@
         <div class="instruction">
             <p>This is your API key.</p>
             <p>Copy it and save it in a password manager for easy access.</p>
-        </div>  
+        </div>
         <p id="tokenOutput"></p>
         <button id="copyButton" onclick="copyToken()">Copy Key</button>
         <button onclick="resetPage()"><-- Start Over</button>
@@ -255,29 +259,36 @@
             <h2>Third Party App Access</h2>
             <h3 id="popup-title"></h3>
             <ul>
-                <li><strong>This app WILL be able to:</strong> Access your API key which will allow it to generate private duck addresses.</li>
-                <li><strong>This app WILL NOT be able to:</strong> Access the email associated with your account OR your personal duck address.</li>
+                <li><strong>This app WILL be able to:</strong> Access your API key which will allow it to generate
+                    private duck addresses.</li>
+                <li><strong>This app WILL NOT be able to:</strong> Access the email associated with your account OR your
+                    personal duck address.</li>
             </ul>
-            <p>NOTE: Your API key cannot be reset, so you cannot revoke access from any apps.</address></p>
-            <div class ="button-container">
+            <p>NOTE: Your API key cannot be reset, so you cannot revoke access from any apps.</address>
+            </p>
+            <div class="button-container">
                 <button style="background-color: #ff0000;" onclick="authCancel()">Go Back</button>
-                <button style="background-color: #28a745;" onclick="document.getElementById('permissionPopup').style.display = 'none'">Continue</button>
+                <button style="background-color: #28a745;"
+                    onclick="document.getElementById('permissionPopup').style.display = 'none'">Continue</button>
             </div>
         </div>
     </div>
-    <footer style="position: relative; left: 0; bottom: 0; width: 100%; text-align: center; padding: 10px 0; font-family: Arial, sans-serif; margin-top: 20px;">
+    <footer
+        style="position: relative; left: 0; bottom: 0; width: 100%; text-align: center; padding: 10px 0; font-family: Arial, sans-serif; margin-top: 20px;">
         <a href="https://github.com/Hamster45105/ddgemail-token">
-          <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social&logo=github&label=Stars">
+            <img alt="GitHub Repo stars"
+                src="https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social&logo=github&label=Stars">
         </a>
         <div id="google_translate_element"></div>
         <p style="color: #333; font-family: Arial, sans-serif; font-size: 18px; text-align: center;">
-            Made with ❤️ by 
-            <a href="https://github.com/Hamster45105" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">
+            Made with ❤️ by
+            <a href="https://github.com/Hamster45105" target="_blank"
+                style="color: #333; text-decoration: none; font-weight: bold;">
                 Hamster45105
             </a>
-        </p>      
+        </p>
     </footer>
-  <script src="https://js.hcaptcha.com/1/api.js"async defer></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <script>
         // Main functions
         async function auth() {
@@ -285,16 +296,16 @@
             let username = document.getElementById('username').value;
             const hcaptchaResponse = hcaptcha.getResponse();
             const button = document.querySelector('button[onclick="auth()"]');
-            
+
             // Change button to loading
             setButtonLoading(button, 'Authenticating...');
-            
+
             // Remove @duck.com if found
             if (username.endsWith('@duck.com')) {
                 username = username.slice(0, -9);
                 document.getElementById('username').value = username;
             }
-            
+
             // Send request
             try {
                 const response = await fetch('/api/auth', {
@@ -304,13 +315,13 @@
                     },
                     body: JSON.stringify({ username, hcaptchaResponse })
                 });
-                
+
                 // Throw error if response is not OK
                 if (!response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.error);
-                }   
-                
+                }
+
                 // Display username
                 document.getElementById('emailDisplay').textContent = document.getElementById('username').value + '@duck.com';
 
@@ -322,7 +333,7 @@
                 hcaptcha.reset();
                 showErrorPopup(error.message)
             }
-            
+
             // Remove button loading status
             unSetButtonLoading(button, 'Next -->');
         }
@@ -343,8 +354,8 @@
             const otpPattern = /https:\/\/duckduckgo\.com\/email\/login\?otp=(\w+-\w+-\w+-\w+)&user=\w+/;
             const match = otp.match(otpPattern);
             if (match) {
-                otp = match[1].replace(/-/g, ' '); 
-                document.getElementById('otp').value = otp; 
+                otp = match[1].replace(/-/g, ' ');
+                document.getElementById('otp').value = otp;
             }
 
             // Send request
@@ -356,12 +367,12 @@
                     },
                     body: JSON.stringify({ username, otp })
                 });
-                
+
                 // Throw error if response is not OK
                 if (!response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.error);
-                }   
+                }
 
                 // Display key
                 const data = await response.json();
@@ -383,16 +394,16 @@
                 // Show error if occured
                 showErrorPopup(error.message)
             }
-            
+
             if (callbackUrl) {
                 button.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
                 button.disabled = false;
-                button.style.backgroundColor = "#4CAF50"; 
+                button.style.backgroundColor = "#4CAF50";
             } else {
                 unSetButtonLoading(button, 'Get Key -->');
             }
         }
-        
+
         // Page changing
         function backToUsername() {
             // Reset captcha
@@ -413,7 +424,7 @@
             // Reset copy button
             document.getElementById('copyButton').textContent = 'Copy Key';
             document.getElementById('copyButton').style.backgroundColor = '#4CAF50';
-            
+
             // Clear OTP textbox
             document.getElementById('otp').value = '';
 
@@ -423,7 +434,7 @@
             // Change page
             document.getElementById('tokenPage').style.display = 'none';
             document.getElementById('usernamePage').style.display = 'block';
-            
+
         }
 
         function authCancel() {
@@ -432,7 +443,7 @@
             const redirectUrl = callbackUrl.replace('__API_KEY__', 'USER_CANCELLED');
             window.location.href = redirectUrl;
         }
-        
+
         // Button functions
         function copyToken() {
             var token = document.getElementById('tokenOutput').innerText;
@@ -455,54 +466,54 @@
             button.disabled = false;
             button.style.backgroundColor = "#4CAF50";
         }
-        
-        window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get('username');
-        if (username) {
-            document.getElementById('username').value = username;
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            if (username) {
+                document.getElementById('username').value = username;
+            }
+
+            // Get the callback URL and web name from the URL parameters
+            const callbackUrl = urlParams.get('callback');
+
+            if (callbackUrl) {
+                const webName = urlParams.get('app_name');
+
+                // Check if the callback URL contains __API_KEY__
+                if (!callbackUrl.includes('__API_KEY__')) {
+                    showErrorPopup("Invalid callback URL - No API key detected!")
+                    removeCallbackParams();
+                    return;
+                }
+
+                // Check if the callback URL is a valid URL
+                let url;
+                try {
+                    url = new URL(callbackUrl.replace('__API_KEY__', "examplekey"));
+                } catch (_) {
+                    showErrorPopup("Invalid callback URL - Not a valid URL!");
+                    removeCallbackParams();
+                    return;
+                }
+
+                // If app name is present, modify the button
+                if (webName) {
+                    // Get the button element
+                    const btn = document.getElementById('getKey');
+
+                    // Set the button text
+                    btn.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
+                }
+
+                // Show the popup
+                const popup = document.getElementById('permissionPopup');
+                const title = document.getElementById('popup-title');
+
+                title.textContent = 'Authorize "' + (webName || 'an unnamed app') + '" to access your DuckDuckGo email account';
+                popup.style.display = 'block';
+            }
         }
-
-        // Get the callback URL and web name from the URL parameters
-        const callbackUrl = urlParams.get('callback');
-        
-        if (callbackUrl) {
-            const webName = urlParams.get('app_name');
-
-            // Check if the callback URL contains __API_KEY__
-            if (!callbackUrl.includes('__API_KEY__')) {
-                showErrorPopup("Invalid callback URL - No API key detected!")
-                removeCallbackParams();
-                return;
-            }
-
-            // Check if the callback URL is a valid URL
-            let url;
-            try {
-                url = new URL(callbackUrl.replace('__API_KEY__', "examplekey"));
-            } catch (_) {
-                showErrorPopup("Invalid callback URL - Not a valid URL!");
-                removeCallbackParams();
-                return;
-            }
-
-            // If app name is present, modify the button
-            if (webName) {
-                // Get the button element
-                const btn = document.getElementById('getKey');
-
-                // Set the button text
-                btn.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
-            }
-
-            // Show the popup
-            const popup = document.getElementById('permissionPopup');
-            const title = document.getElementById('popup-title');
-            
-            title.textContent = 'Authorize "' + (webName || 'an unnamed app') + '" to access your DuckDuckGo email account';
-            popup.style.display = 'block';
-        }
-    }
 
         // Remove params
         function removeCallbackParams() {
@@ -523,24 +534,26 @@
         }
 
         // Keyboard enter shortcuts
-        document.getElementById('username').addEventListener('keydown', function(event) {
+        document.getElementById('username').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 auth();
             }
         });
 
-        document.getElementById('otp').addEventListener('keydown', function(event) {
+        document.getElementById('otp').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 getToken();
             }
         });
-               
+
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
-      }
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+        }
     </script>
 </body>
+
 </html>
