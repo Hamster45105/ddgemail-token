@@ -468,62 +468,6 @@
             button.style.backgroundColor = "#4CAF50";
         }
 
-        window.onload = function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const username = urlParams.get('username');
-            if (username) {
-                document.getElementById('username').value = username;
-            }
-
-            // Get the callback URL and web name from the URL parameters
-            const callbackUrl = urlParams.get('callback');
-
-            if (callbackUrl) {
-                const webName = urlParams.get('app_name');
-
-                // Check if the callback URL contains __API_KEY__
-                if (!callbackUrl.includes('__API_KEY__')) {
-                    showErrorPopup("Invalid callback URL - No API key detected!")
-                    removeCallbackParams();
-                    return;
-                }
-
-                // Check if the callback URL is a valid URL
-                let url;
-                try {
-                    url = new URL(callbackUrl.replace('__API_KEY__', "examplekey"));
-                } catch (_) {
-                    showErrorPopup("Invalid callback URL - Not a valid URL!");
-                    removeCallbackParams();
-                    return;
-                }
-
-                // If app name is present, modify the button
-                if (webName) {
-                    // Get the button element
-                    const btn = document.getElementById('getKey');
-
-                    // Set the button text
-                    btn.innerHTML = 'Continue to: <strong>' + webName + '</strong>';
-                }
-
-                // Show the popup
-                const popup = document.getElementById('permissionPopup');
-                const title = document.getElementById('popup-title');
-
-                title.textContent = 'Authorize "' + (webName || 'an unnamed app') + '" to access your DuckDuckGo email account';
-                popup.style.display = 'block';
-            }
-        }
-
-        // Remove params
-        function removeCallbackParams() {
-            const url = new URL(window.location.href);
-            url.searchParams.delete('callback');
-            url.searchParams.delete('app_name');
-            window.history.replaceState({}, '', url);
-        }
-
         // Error popup handling
         function showErrorPopup(errorMessage) {
             document.getElementById("error-message").innerHTML = errorMessage;

@@ -27,12 +27,6 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 
 If you can't get the key because an error occured, open an issue.
 
-## Integrate YOUR service
-Are you building an app which requires users to input a DuckDuckGo email API Key? DDG Email API Key Grabber makes it easier for you to get the key!
-
-Visit the [developer docs](https://github.com/Hamster45105/ddgemail-token/blob/main/DEV_DOCS.md) for more info
-
-
 ## Third Party Services
 To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
 
