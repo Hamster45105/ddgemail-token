@@ -225,7 +225,7 @@
         </div>
         <input type="text" id="username" placeholder="Username">
         <div class="h-captcha" data-sitekey="92f19740-3042-4fa0-b878-c38b0301b0c3"></div>
-        <button onclick="auth()">Next --></button>
+        <button onclick="auth()">Next →</button>
     </div>
     <div id="otpPage" class="page" style="display: none;">
         <h1>Enter OTP</h1>
@@ -235,7 +235,7 @@
         </div>
         <p id="emailDisplay"></p>
         <input type="text" id="otp" placeholder="OTP">
-        <button id="getKey" onclick="getToken()">Get Key --></button>
+        <button id="getKey" onclick="getToken()">Get Key →</button>
         <button onclick="backToUsername()"><-- Back</button>
     </div>
     <div id="tokenPage" class="page" style="display: none;">
@@ -336,7 +336,7 @@
             }
 
             // Remove button loading status
-            unSetButtonLoading(button, 'Next -->');
+            unSetButtonLoading(button, 'Next →');
         }
 
         async function getToken() {
@@ -401,7 +401,7 @@
                 button.disabled = false;
                 button.style.backgroundColor = "#4CAF50";
             } else {
-                unSetButtonLoading(button, 'Get Key -->');
+                unSetButtonLoading(button, 'Get Key →');
             }
         }
 
