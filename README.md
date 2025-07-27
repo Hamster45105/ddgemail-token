@@ -13,11 +13,11 @@
 
 This is a web application that will retrieve your DDG (DuckDuckGo) email API key. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
 
-Your API key is needed for Bitwarden, [Send From Duck](https://hamster45105.github.io/DuckAddressSend/) and others.
+Your API key is needed for Bitwarden, [Send From Duck](https://sendfromduck.vercel.app/) and others.
 
 Because DuckDuckGo does not officially support using third-party services with their email service, it is hard to get the API key unless you know how to use developer tools. This site is designed to make it easier.
 
-If for whatever reason you don't want to use this site for getting your key, you can find other more difficult ways to get your key [on this wiki](https://github.com/Hamster45105/DuckAddressSend/wiki/Get-DDG-API-Key). If your worried about security/privacy check out the [third party services statement](https://github.com/Hamster45105/ddgemail-token#third-party-services).
+If for whatever reason you don't want to use this site for getting your key, you can find other more difficult ways to get your key [on this wiki](https://github.com/Hamster45105/SendFromDuck/wiki/Get-DDG-API-Key). If your worried about security/privacy check out the [third party services statement](https://github.com/Hamster45105/ddgemail-token#third-party-services).
 
 ## Usage
 
