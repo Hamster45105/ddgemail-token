@@ -120,76 +120,6 @@
             cursor: pointer;
         }
 
-        #permissionPopup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        #permissionPopup>div {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            animation: fade-in 0.5s ease-out;
-            width: 80%;
-            max-width: 500px;
-            max-height: 90%;
-            overflow: auto;
-        }
-
-        #permissionPopup .button-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        #permissionPopup button {
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px 0;
-            flex: 1;
-            margin: 0 5px;
-        }
-
-        #permissionPopup button:nth-child(1) {
-            background-color: #ff0000;
-        }
-
-        #permissionPopup button:nth-child(2) {
-            background-color: #28a745;
-        }
-
-        #permissionPopup h2 {
-            color: #333;
-        }
-
-        #permissionPopup ul {
-            text-align: left;
-        }
-
-        #permissionPopup ul li {
-            margin-bottom: 10px;
-        }
-
-        #permissionPopup ul li strong {
-            color: #333;
-        }
-
         .instruction {
             background-color: #f9f9f9;
             border: 1px solid #ddd;
@@ -253,25 +183,6 @@
             <h2>Error</h2>
             <p id="error-message">An error occurred</p>
             <button onclick="closeErrorPopup()">Dismiss</button>
-        </div>
-    </div>
-    <div id="permissionPopup">
-        <div>
-            <h2>Third Party App Access</h2>
-            <h3 id="popup-title"></h3>
-            <ul>
-                <li><strong>This app WILL be able to:</strong> Access your API key which will allow it to generate
-                    private duck addresses.</li>
-                <li><strong>This app WILL NOT be able to:</strong> Access the email associated with your account OR your
-                    personal duck address.</li>
-            </ul>
-            <p>NOTE: Your API key cannot be reset, so you cannot revoke access from any apps.</address>
-            </p>
-            <div class="button-container">
-                <button style="background-color: #ff0000;" onclick="authCancel()">Go Back</button>
-                <button style="background-color: #28a745;"
-                    onclick="document.getElementById('permissionPopup').style.display = 'none'">Continue</button>
-            </div>
         </div>
     </div>
     <footer
