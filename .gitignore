@@ -1,3 +1,4 @@
 .vercel
-node_modules/
 .env
+.venv
+.DS_Store
