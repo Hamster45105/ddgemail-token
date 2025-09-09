@@ -3,15 +3,10 @@
 [![GitHub Stars](https://img.shields.io/github/stars/Hamster45105/ddgemail-token?style=social)](https://github.com/Hamster45105/ddgemail-token/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/Hamster45105/ddgemail-token?style=social)](https://github.com/Hamster45105/ddgemail-token/forks)
 
-
-[![Reported Bugs](https://img.shields.io/github/issues/Hamster45105/ddgemail-token/bug?label=Reported%20Bugs&style=flat&color=cc4453)](https://github.com/Hamster45105/ddgemail-token/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-[![Current License](https://img.shields.io/github/license/Hamster45105/ddgemail-token?label=License&style=flat)](https://github.com/Hamster45105/ddgemail-token/blob/main/LICENSE)
 [![Deployment Status](https://img.shields.io/github/deployments/Hamster45105/ddgemail-token/Production?logo=vercel&label=Deployment)](https://github.com/Hamster45105/ddgemail-token/deployments/Production)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fddgemail-token.vercel.app%2F&label=Website%20Status)](https://isitup.org/ddgemail-token.vercel.app)
-[![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/Hamster45105/ddgemail-token?label=Commits)](https://github.com/Hamster45105/ddgemail-token/graphs/commit-activity)
-[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Hamster45105/ddgemail-token/main?label=Last%20Commit%20(main))](https://github.com/Hamster45105/ddgemail-token/commits/main)
 
-This is a web application that will retrieve your DDG (DuckDuckGo) email API key. It's built with HTML, CSS, and JavaScript, and deployed with Vercel.
+This is a web application that will retrieve your DuckDuckGo email API key. It's built with HTML, CSS, JavaScript & Python and deployed with Vercel.
 
 Your API key is needed for Bitwarden, [Send From Duck](https://sendfromduck.vercel.app/) and others.
 
@@ -28,7 +23,7 @@ Note: Don't spam getting a token for the same user because the DuckDuckGo servic
 If you can't get the key because an error occured, open an issue.
 
 ## Third Party Services
-To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about) (a more privacy friendly alternative to reCaptcha). Here are their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
+To prevent spam and bots, the website uses [hCatpcha](https://www.hcaptcha.com/what-is-hcaptcha-about). By using this site you are agreeing to their [terms of service](https://hcaptcha.com/terms) and [privacy policy](https://hcaptcha.com/privacy).
 
 hCaptcha aims to ensure seamless access for all users while maintaining security. For this reason they offer accessibility options for those users that are unable to complete visual challenges. You can learn more about how this works and how to sign up [at their website](https://www.hcaptcha.com/accessibility).
 
@@ -42,7 +37,7 @@ No data is stored by the server and no one can read your personal duck address o
 
 This project is deployed with Vercel. To host your own version on Vercel, click the button below.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token%2F&env=HCAPTCHA_SECRET_KEY&envDescription=Create%20a%20hCaptcha%20secret%20key%20to%20protect%20your%20site%20from%20bots.&envLink=https%3A%2F%2Fdashboard.hcaptcha.com%2Fsites%2Fnew&project-name=ddgemail-grabber&repository-name=ddgemail-grabber)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHamster45105%2Fddgemail-token%2F&env=HCAPTCHA_SECRET_KEY&envDescription=Create%20a%20hCaptcha%20secret%20key%20to%20protect%20your%20site%20from%20bots.&envLink=https%3A%2F%2Fdashboard.hcaptcha.com%2Fsites%2Fnew&project-name=ddgemail-token&repository-name=ddgemail-token)
 
 ## License
 
